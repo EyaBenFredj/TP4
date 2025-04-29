@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Hotellerie_X.Models.HotellerieModel.Hotel>
+@using Hotellerie_X.Models.HotellerieModel
+
+@{
+    ViewData["Title"] = "Liste des Hôtels";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1 class="mt-4">Liste des Hôtels</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Créer un nouvel hôtel</a>
+</p>
+
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().Nom)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Etoiles)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Ville)</th>
+            <th>@Html.DisplayNameFor(model => model.First().SiteWeb)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Tel)</th>
+            <th>Note Moyenne</th>
+
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Nom)</td>
+                <td>@Html.DisplayFor(modelItem => item.Etoiles)</td>
+                <td>@Html.DisplayFor(modelItem => item.Ville)</td>
+                <td><a href="@item.SiteWeb" target="_blank">@item.SiteWeb</a></td>
+                <td>@Html.DisplayFor(modelItem => item.Tel)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Modifier</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Détails</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Supprimer</a>
+                    <a asp-controller="Appreciations" asp-action="Index" class="btn btn-sm btn-outline-dark">
+                        Appréciations
+                    </a>
+                    <a asp-controller="Appreciations" asp-action="ByHotel" asp-route-id="@item.Id" class="btn btn-outline-info btn-sm">
+                        Voir appréciations
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
