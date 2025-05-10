@@ -135,9 +135,4 @@ Let me know if you want deployment instructions!
 📬 [GitHub Profile](https://github.com/EyaBenFredj)  
 🎓 TP4 Project — ASP.NET Core MVC
 
----
 
-
----
-
-Let me know if you'd like it translated to French 🇫🇷 or want help deploying it to Azure or GitHub Pages!
